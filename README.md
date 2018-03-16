@@ -20,6 +20,8 @@ Read each question closely, and don't worry about anything other than what you'r
 
 Again--read **all** of each question carefully before you start doing any work.
 
+0. **Fork and clone this repository. Inside the folder created by the clone, create a folder with your name and do the work in there. Do a commit after each question. Then push your commits back to your fork when you're done and make a pull request. I will accept/merge the pull requests and then you will be able to easily see each other's work.
+
 1. Access the city information using some kind of object notation.
     * print the name of the city in the console.
     * by pulling the city name and the latitude and longitude out of the object and interpolating them, print a sentence in the console that reads: `"The coordinates of Evanston are 42.0447 latitude and -87.6931 longitude."`
