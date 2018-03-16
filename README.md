@@ -50,7 +50,16 @@ After each object is built, push it into an array called `myWeather`.<br><br>
 This will take some thinking. Plan out the steps required for each step carefully before you start writing code. You can use pencil and paper for this, or write on the desks/glass walls with dry erase marker.  You may end up writing temporary code that you later replace with different code--that is a very common practice for developers.<br><br>
 I'd suggest just getting it working for one piece of data for one day, then all the data for a day, before writing the final code to do all the days.
 
-7. Put all of the logic (but don't delete your question 6 answer) from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter called `data`, and works with that parameter (instead of with the original object) to build and return an array like the `myWeather` one from the previous question. Refactor the logic as necessary to use the parameter to generate the objects/array of objects.
+7. Put all of the logic (but don't delete your question 6 answer) from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter called `data`, and works with that parameter (instead of with the original object) to build and return an array like the `myWeather` one from the previous question. Refactor the logic as necessary to use the parameter to generate the objects/array of objects. <br><br>So your function might start out like this: 
+```
+const getWeatherArray = (data) => {
+  // logic similar to question 6
+}
+```
+You should then be able to use your function like this:
+```
+const myWeatherArray = getWeatherArray(evanstonWeather);
+```
 
 8. Write _another_ function `printForecast` that iterates over the array returned by `getWeatherArray` and console.logs the 5-day forecast data like this:<br>
 ```
