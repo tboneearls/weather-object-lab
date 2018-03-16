@@ -51,13 +51,13 @@ This will take some thinking. Plan out the steps required for each step carefull
 I'd suggest just getting it working for one piece of data for one day, then all the data for a day, before writing the final code to do all the days.
 
 7. Put all of the logic (but don't delete your question 6 answer) from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter called `data`, and works with that parameter (instead of with the original object) to build and return an array like the `myWeather` one from the previous question. Refactor the logic as necessary to use the parameter to generate the objects/array of objects. <br><br>So your function might start out like this: 
-```
+```javascript
 const getWeatherArray = (data) => {
   // logic similar to question 6
 }
 ```
 You should then be able to use your function like this:
-```
+```javascript
 const myWeatherArray = getWeatherArray(evanstonWeather);
 ```
 
@@ -76,6 +76,8 @@ Weather: heavy snow
 High Temp: 23°F
 Low Temp: 12°F
 -------------------
+
+etc....
 ```
 
 <hr>
