@@ -42,17 +42,17 @@ etc
 ```
 
 6. So, by now you've noticed that you're given the weather data for 3 hour time increments. For this question, write logic to figure out the high and low temp for each day, as well as a description of the weather overall for the day. You will create an object that stores all of it, as follows: 
-• the date in a human-friendly format (like "Tue, Jan 30, 1997"--research JavaScript date stuff on MDN to see how to convert)
-• the high temp for that day (use the highest of the 8 values for a given day, don't forget to convert Kelvin to F -- again write logic to do this)
-• low temp (again, use the lowest of the 8 values for a given day, converted)
+• the date in a human-friendly format (like "Tue, Jan 30, 1997"--research JavaScript date stuff on MDN to see how to convert)<br>
+• the high temp for that day (use the highest of the 8 values for a given day, don't forget to convert Kelvin to F -- again write logic to do this)<br>
+• low temp (again, use the lowest of the 8 values for a given day, converted)<br>
 • the weather description for that day -- this will be the weather description that occurs the 'most frequently.'  if multiple descriptions occur an equal number of times in a day, you can use whichever you like. <br><br>
 After each object is built, push it into an array called myWeather.<br><br>
 This will take some thinking. Plan out the steps required for each step carefully before you start writing code. You can use pencil and paper for this, or write on the desks/glass walls with dry erase marker.  You may end up writing temporary code that you later replace with different code--that is a very common practice for developers.<br><br>
 I'd suggest just getting it working for one piece of data for one day, then all the data for a day, before writing the final code to do all the days.
 
-7. Put (copy and paste) all of the logic from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter and returns the myWeather array you built.  Refactor the logic as necessary to use the parameter to generate the objects/array of objects.
+7. Put (copy and paste) all of the logic from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter and returns the `myWeather` array you built.  Refactor the logic as necessary to use the parameter to generate the objects/array of objects.
 
-8. Write _another_ function `printForecast` that iterates over the array returned by getWeatherArray and console.logs the 5-day forecast data like this:<br>
+8. Write _another_ function `printForecast` that iterates over the array returned by `getWeatherArray` and console.logs the 5-day forecast data like this:<br>
 ```
 -------------------
 Date: Tue, Jan 30, 1997
