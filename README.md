@@ -43,21 +43,29 @@ etc
 • the date in a human-friendly format (like "Tue, Jan 30, 1997"--research JavaScript date stuff on MDN to see how to convert)
 • the high temp for that day (use the highest of the 8 values for a given day, don't forget to convert Kelvin to F -- again write logic to do this)
 • low temp (again, use the lowest of the 8 values for a given day, converted)
-• the weather description for that day -- this will be the weather description that occurs the 'most frequently.'  if multiple descriptions occur an equal number of times in a day, you can use whichever you like.
-after each object built, push it into an array called myWeather.<br><br>
+• the weather description for that day -- this will be the weather description that occurs the 'most frequently.'  if multiple descriptions occur an equal number of times in a day, you can use whichever you like. <br><br>
+After each object is built, push it into an array called myWeather.<br><br>
 This will take some thinking. Plan out the steps required for each step carefully before you start writing code. You can use pencil and paper for this, or write on the desks/glass walls with dry erase marker.  You may end up writing temporary code that you later replace with different code--that is a very common practice for developers.<br><br>
 I'd suggest just getting it working for one piece of data for one day, then all the data for a day, before writing the final code to do all the days.
 
-7. Put (copy and paste) all of the logic from question 5 into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter and returns the myWeather array you built.  Refactor the logic as necessary to use the parameter to generate the objects/array of objects.
+7. Put (copy and paste) all of the logic from the previous question into a function called `getWeatherArray` that again takes the entire huge `evanstonWeather` object in as a parameter and returns the myWeather array you built.  Refactor the logic as necessary to use the parameter to generate the objects/array of objects.
 
-8. Write _another_ function `printForecast` that iterates over that array and console.logs the data like this:<br>
+8. Write _another_ function `printForecast` that iterates over the array returned by getWeatherArray and console.logs the 5-day forecast data like this:<br>
 ```
 -------------------
 Date: Tue, Jan 30, 1997
-Weather: rainy
-High Temp: 23°F
+Weather: clear
+High Temp: 13°F
 Low Temp: 2°F
 -------------------
+
+-------------------
+Date: Wed, Jan 31, 1997
+Weather: heavy snow
+High Temp: 23°F
+Low Temp: 12°F
+-------------------
+
 ```
 
 <hr>
