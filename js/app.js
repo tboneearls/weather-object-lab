@@ -1227,7 +1227,7 @@ console.log("The coordinates of " + evanstonWeather.city.name + " are " + evanst
 
 const getCity = (obj) => {
     // make a variable to store the city data from the object parameter
-    const cityData= obj.city;
+    const cityData = obj.city;
     // return the name of the city from the cityData variable
     return cityData.name;
 };
@@ -1243,7 +1243,7 @@ console.log(getCity(evanstonWeather));
 
 // unix timestamp of 03/20 6:00 pm = 1521568800
 
-console.log(evanstonWeather.list.length);
+// console.log(evanstonWeather.list.length);
 for (let i = 0; i < evanstonWeather.list.length; i++) {
     if (evanstonWeather.list[i].dt === 1521568800) {
         console.log ("The weather in Evanston on March 20th at 6:00 PM is expected to be " + evanstonWeather.list[i].weather[0].description + ".");
@@ -1317,3 +1317,35 @@ for (let i = 0; i < evanstonWeather.list.length; i++) {
         console.log("The wind will be blowing " + degToCard(evanstonWeather.list[i].wind.deg) + " at " + metersSecToMPH(evanstonWeather.list[i].wind.speed) + " MPH.");
     }
 };
+
+// 5
+
+// print the humidity each day at noon
+// if humidity is over 75% also print gross
+
+// every 24 hours the unix timestamp increases by 86400
+// first unix time stamp was at 00:00
+// that means the first time it was noon is half that value, 43200
+
+
+// find and return dates for all unix timestamps at noon
+// store them in an array
+
+const unixNoonHumidity = {};
+
+for (let i = 0; i < evanstonWeather.list.length; i++) {
+    // if the unix time stamp is at noon
+    if (((evanstonWeather.list[i].dt - 43200) % 86400) === 0) {
+        // assign variable to humidity above 75
+        let grossHumidity = evanstonWeather.list[i].main.humidity;
+        // capture humidities above 75 for dates at noon to implement the word gross
+        if (grossHumidity >= 75) {
+            unixNoonHumidity[evanstonWeather.list[i].dt_txt] = evanstonWeather.list[i].main.humidity + "% gross";
+            // console.log(evanstonWeather.list[i].main.humidity);
+        }
+    }
+}
+
+console.log(unixNoonHumidity);
+// now I have an object with all dates at noon from the original object
+// with their corresponding humidities
