@@ -1256,10 +1256,64 @@ for (let i = 0; i < evanstonWeather.list.length; i++) {
 // unix timestamp at 03/20 9:00 am = 1521536400
 
 // to convert Kelvin to Fahrenheit: 1.8 x (K - 273) + 32.
+// create function to convert Kelvin to Fahrenheit:
+const kelvinToFahrenheit = (tempInKelvin) => {
+    return (1.8 * (tempInKelvin - 273) + 32) // output in degrees Fahrenheit
+};
 
 for (let i = 0; i < evanstonWeather.list.length; i++) {
     if (evanstonWeather.list[i].dt === 1521536400) {
-        console.log(1.8 * (evanstonWeather.list[i].main.temp - 273) + 32);
+        console.log(kelvinToFahrenheit(evanstonWeather.list[i].main.temp));
     }
 }
 
+// 4
+
+// create meters/second to miles/hour conversion function 
+
+// 3600 seconds in an hour
+// 1609.344 meters in a mile
+// 3600 / 1609.344 = 2.236936292054402 (7 significant figures)
+
+const metersSecToMPH = (metersPerSec) => {
+    return (metersPerSec * 2.236936292054402);
+};
+
+// create wind degrees to cardinal direction conversion function
+
+// direction changes every 45 degrees with 8 directions starting at 22.5 degrees going clockwise
+
+const degToCard = (degrees) => {
+    // set condition if degrees is over 360
+    if (degrees >= 360) {
+        degrees -= 360;
+    } else if (22.5 < degrees < 67.5) {
+        return "NE";
+    } else if (67.5 < degrees < 112.5) {
+        return "E";
+    } else if (112.5 < degrees < 157.5) {
+        return "SE";
+    } else if (157.5 < degrees < 202.5) {
+        return "S";
+    } else if (202.5 < degrees < 247.5) {
+        return "SW";
+    } else if (247.5 < degrees < 292.5) {
+        return "W";
+    } else if (292.5 < degrees < 337.5) {
+        return "NW";
+    } else {
+        // decided to do N last so I don't have to set more conditions
+        // since it switches at 0 degrees
+        return "N";
+    }
+};
+
+// timestamp of St. Patty's at 3pm = 1521298800
+
+// want to find wind speed (in MPH) and direction
+
+for (let i = 0; i < evanstonWeather.list.length; i++) {
+    if (evanstonWeather.list[i].dt === 1521298800) {
+        console.log("The wind will be blowing " + degToCard(evanstonWeather.list[i].wind.deg) + " at " + metersSecToMPH(evanstonWeather.list[i].wind.speed) + " MPH.");
+    }
+};
