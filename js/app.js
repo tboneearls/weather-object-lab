@@ -1349,3 +1349,140 @@ for (let i = 0; i < evanstonWeather.list.length; i++) {
 console.log(unixNoonHumidity);
 // now I have an object with all dates at noon from the original object
 // with their corresponding humidities
+
+
+// 6
+
+// need to write function to convert unix time stamp to human-friendly time
+// times in table are already offset to our timezone.
+// got to convert to milliseconds
+
+const convertDate = (unix) => {
+    // convert unix to milliseconds
+    const weatherDate = new Date(unix * 1000);
+    // convert to string and remove extra data at the end so it's more human-friendly
+    const condensedDate = weatherDate.toString().substr(0,15);
+    return condensedDate;
+};
+
+const myWeatherUnclean = [];
+
+
+for (let i = 0; i < evanstonWeather.list.length; i++) {
+    // store dates converted from unix value in a variable
+    let convertedDates = convertDate(evanstonWeather.list[i].dt);
+    if (i + 1 < evanstonWeather.list.length) {
+        let convertedDatesPlusOne = convertDate(evanstonWeather.list[i + 1].dt);
+        // console.log(convertedDates, convertedDatesPlusOne, evanstonWeather.list[i + 1]);
+        // push converted dates to the array as separate objects
+        if (convertedDates != convertedDatesPlusOne) {
+            myWeatherUnclean[i] = {date: convertedDates};
+        }
+    } else if (i + 1 === evanstonWeather.list.length) {
+        // doing this so I can capture the unique date at the end of the array
+        // in this case, Wednesday
+        myWeatherUnclean[evanstonWeather.list.length - 1] = {date: convertedDates};
+    }
+};
+
+console.log(myWeatherUnclean);
+// I have an array of objects with all the dates in normal human terms
+// only one object for each day
+// need to filter out empty parts of array
+
+const cleanArray = (arr) => {
+    const newArray = new Array();
+    for (let i = 0; i < arr.length; i++) {
+        // will evaluate to true, so will only return
+        // values that aren't falsy (i.e., 0, null, NaN, undefined, etc.)
+        if (arr[i]) {
+            newArray.push(arr[i]);
+        }
+    }
+    return newArray;
+}
+
+console.log(myWeatherUnclean);
+const myWeather = cleanArray(myWeatherUnclean);
+
+console.log(myWeather);
+// high temps for each day
+// 4 Friday times, 4 Wed times, 8 everything in between
+// first find temps for each day
+// convert to F using function built earlier
+// identify each day
+// then use Math.max to determine the highest temp for that day
+// add to object
+
+const dailyTemps = []; 
+
+for (let i = 0; i < evanstonWeather.list.length; i++) {
+    // convert the Evanston temperatures to degrees Fahrenheit
+    let evanstonTemp = (kelvinToFahrenheit(evanstonWeather.list[i].main.temp));
+    // need to convert the days again to capture + compare
+    let convertedDates = convertDate(evanstonWeather.list[i].dt);
+    // put each daily temp as date: temp in here, then search for max temp
+    // console.log(convertedDates, evanstonTemp);
+    // need to use bracket notation so it reads the variable, not the word
+    // being assigned as a key
+    dailyTemps[i] = {[convertedDates]: evanstonTemp}
+    // console.log(myWeather[j]["date"]);
+    // console.log(evanstonTemp);
+};
+
+// maybe I can split each day's temp into its own array?
+
+
+// if (i + 1 < evanstonWeather.list.length) {
+//     let convertedDates = convertDate(evanstonWeather.list[i].dt);
+//     if (convertedDates === ) { 
+//     }
+// }
+
+console.log(dailyTemps);
+// console.log(myWeather.length, dailyTemps.length);
+// console.log(dailyTemps[0], Object.keys(dailyTemps[0]), Object.values(dailyTemps[0]));
+// console.log(myWeather[0], Object.keys(myWeather[0]), Object.values(myWeather[0]));
+for (let i = 0; i < dailyTemps.length; i++) {
+    for (let j = 0; j < myWeather.length; j++) {
+        // console.log(myWeather[j]["date"]);
+        // for (let prop in dailyTemps[i]) {
+            if (Object.values(myWeather[j]) === Object.keys(dailyTemps[i])) {
+                console.log("hello");
+            }
+        // }
+    }
+}
+
+// for (let i = 0; i < evanstonWeather.list.length; i++) {
+//     let convertedDates = convertDate(evanstonWeather.list[i].dt);
+//     console.log(dailyTemps[i][convertedDates], dailyTemps[i + 1][convertedDates]);
+//     // need to redefine convertedDates so I can call it in this loop.
+//     if (i + 1 < evanstonWeather.list.length) {
+//         // i + 1 can't be greater than the length of the array because the last
+//         // value of i would read undefined  
+//         if (dailyTemps[i][convertedDates] === dailyTemps[i + 1][convertedDates]) {
+//             // if the days are the same
+//             // store max temp for each day in an array
+//             const dailyMaxTemp = [];
+//             if (Object.values(dailyTemps[i]) >= Object.values(dailyTemps[i + 1])) {
+//                 // find the highest temp for each day
+//                 // store in array
+//                 dailyMaxTemp.push(dailyTemps[i]);
+//                 for (let j = 0; j < myWeather.length; j++) {
+//                     // assign the highest temp to the myWeather object
+//                     // const myWeatherTemps = Object.values(dailyMaxTemps[j])
+//                     // myWeather[j]["temp"] = Object.values(dailyMaxTemp[j]);
+//                 }
+//             }
+//             console.log(dailyMaxTemp);
+//         }
+//     }
+// }
+
+console.log(myWeather);
+// // now I have all the dates and temps in an array of objects
+
+// condensedArr = [];
+
+// console.log(myWeather[0].hasOwnProperty("Sun Mar 18 2018"));
